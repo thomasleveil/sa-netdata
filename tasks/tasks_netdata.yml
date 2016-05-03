@@ -1,0 +1,39 @@
+---
+  - name: NETDATA | Check if present
+    command: test -x /usr/sbin/netdata
+    register: netdata_present
+    tags:
+      - teamcity
+
+
+  - name: NETDATA | Install package dependencies
+    apt: pkg='{{item}}' state=present
+    with_items:
+     - "zlib1g-dev"
+     - "gcc" 
+     - "make" 
+     - "git" 
+     - "autoconf"
+     - "autogen" 
+     - "automake" 
+     - "pkg-config"
+    when: netdata_present | failed
+    become: yes
+    tags:
+     - netdata 
+
+  - name: NETDATA | Clone for install
+    git: repo=https://github.com/firehol/netdata.git dest=/opt/netdata depth="1"
+    when: netdata_present | failed
+    tags:
+      - netdata
+
+  - name: NETDATA | Build and install
+    shell: "./netdata-installer.sh --install {{install_dir}} --dont-wait"
+    args:
+      chdir: /opt/netdata
+    when: netdata_present | failed
+    become: yes
+    tags:
+      - netdata
+

@@ -1,0 +1,4 @@
+[submodule "roles/sa-netdata"]
+        path = roles/sa-netdata
+        url = https://github.com/softasap/sa-netdata.git
+

@@ -1,0 +1,3 @@
+---
+# tasks file for sa-netdata
+  - include: tasks_netdata.yml

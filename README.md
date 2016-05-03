@@ -1,38 +1,39 @@
-Role Name
-=========
+sa-netdata
+==========
 
-A brief description of the role goes here.
+[![Build Status](https://travis-ci.org/softasap/sa-netdata.svg?branch=master)](https://travis-ci.org/softasap/sa-netdata)
 
-Requirements
-------------
+Usage example:
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+<pre>
 
-Role Variables
---------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+     - {
+         role: "sa-netdata"
+       }
 
-Dependencies
-------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+</pre>
 
-Example Playbook
-----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+netdata is a extremely optimized Linux utility that provides real-time (per second) performance monitoring for Linux systems, applications, SNMP devices, etc. and shows full interactive charts that absolutely render all collected values over the web browser to analyze them.
 
-License
--------
 
-BSD
+It has been developed to be installed on each Linux system, without interrupting the current running application on it. You can use this tool to monitor and get overview of what is happening in real-time and what just happened, on your Linux systems and applications.
 
-Author Information
-------------------
+This is what it monitors:
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Total and Per Core CPU usage, interrupts, softirqs and frequency.
+Total Memory, RAM, Swap and Kernel usage.
+Disk I/O (per disk: bandwidth, operations, backlog, utilization, etc).
+Monitors Network interfaces including: bandwidth, packets, errors, drops, etc).
+Monitors Netfilter / iptables Linux firewall connections, events, errors, etc.
+Processes (running, blocked, forks, active, etc).
+System Applications with the process tree (CPU, memory, swap, disk reads/writes, threads, etc).
+Apache and Nginx Status monitoring with mod_status.
+MySQL database monitoring: queries, updates, locks, issues, threads, etc.
+Postfix email server message queue.
+Squid proxy server bandwidth and requests monitoring.
+Hardware sensors (temperature, voltage, fans, power, humidity, etc).
+SNMP devices.

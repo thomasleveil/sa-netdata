@@ -2,6 +2,7 @@
   - name: NETDATA | Check if present
     command: test -x /usr/sbin/netdata
     register: netdata_present
+    ignore_errors: yes
     tags:
       - teamcity
 
@@ -23,7 +24,7 @@
      - netdata 
 
   - name: NETDATA | Clone for install
-    git: repo=https://github.com/firehol/netdata.git dest=/opt/netdata depth="1"
+    git: repo=https://github.com/firehol/netdata.git dest=/opt/netdata depth="1" dest="/tmp/netdata"
     when: netdata_present | failed
     tags:
       - netdata
@@ -31,7 +32,7 @@
   - name: NETDATA | Build and install
     shell: "./netdata-installer.sh --install {{install_dir}} --dont-wait"
     args:
-      chdir: /opt/netdata
+      chdir: /tmp/netdata
     when: netdata_present | failed
     become: yes
     tags:

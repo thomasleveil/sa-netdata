@@ -4,7 +4,7 @@
     register: netdata_present
     ignore_errors: yes
     tags:
-      - teamcity
+      - netdata
 
 
   - name: NETDATA | Install package dependencies

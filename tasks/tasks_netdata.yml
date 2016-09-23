@@ -18,6 +18,7 @@
      - "autogen" 
      - "automake" 
      - "pkg-config"
+     - "uuid-dev"
     when: netdata_present | failed
     become: yes
     tags:

@@ -1,6 +1,6 @@
 ---
   - name: NETDATA | Check if present
-    command: test -x /usr/sbin/netdata
+    command: test -x /opt/netdata/usr/sbin/netdata
     register: netdata_present
     ignore_errors: yes
     changed_when: False
